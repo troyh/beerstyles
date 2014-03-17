@@ -16,11 +16,15 @@ module.exports=function(grunt) {
 								styles: grunt.file.readJSON("./BA2011.json")
 							}
 						}
+						else {
+							return {}
+						}
 					}
 				},
 				files: {
 					"../gh-pages/BJCP.html": "BJCPstyles.jade",
-					"../gh-pages/BA.html": "styles.jade"
+					"../gh-pages/BA.html": "styles.jade",
+					"../gh-pages/index.html": "index.jade"
 				}
 			}
 		},
