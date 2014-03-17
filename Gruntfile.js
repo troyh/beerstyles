@@ -19,22 +19,22 @@ module.exports=function(grunt) {
 					}
 				},
 				files: {
-					"BJCP.html": "BJCPstyles.jade",
-					"BA.html": "styles.jade"
+					"../gh-pages/BJCP.html": "BJCPstyles.jade",
+					"../gh-pages/BA.html": "styles.jade"
 				}
 			}
 		},
 		stylus: {
 			compile: {
 				files: {
-					'styles.css': 'styles.styl'
+					'../gh-pages/styles.css': 'styles.styl'
 				}
 			}
 		},
 		browserify: {
 			client: {
 				files: {
-					'ui.js': 'ui.coffee'
+					'../gh-pages/ui.js': 'ui.coffee'
 				}
 			},
 			options: {
