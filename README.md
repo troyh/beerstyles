@@ -11,3 +11,8 @@ BA2json.xsl: An XSLT that transforms the BA XML file into a [JSON](http://json.o
 The [BJCP Styles Guide](http://www.bjcp.org/stylecenter.php) is already [published in XML](http://www.bjcp.org/docs/xmlstyleguide.zip).
 
 # GABF Styles
+
+# HOW TO
+
+    xmlstarlet tr BA2coffee.xsl BA2011-final.xml | coffee -b -c -s --no-header > BA2011-final.json
+	

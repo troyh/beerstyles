@@ -1,0 +1,43 @@
+mixin toPlato(sg)
+	|#{((-1 * 616.868) + (1111.14 * sg) - (630.272 * Math.pow(sg,2)) + (135.997 * Math.pow(sg,3))).toFixed(1)}
+
+extends ../vorlauf/optimism-static/templates/layout
+append head
+	meta(http-equiv="Content-Type", content="text/html;charset=utf-8")
+	script(type="text/javascript",src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js")
+	script(type="text/javascript",src="ui.js")
+	link(rel='stylesheet', href='http://optimismbrewing.com/css/style.css')
+	link(rel='stylesheet', href='styles.css')
+block content
+	h1 Brewer's Association 2011
+	.buttons
+		button#nameSortButton Sort by Name
+		button#numberSortButton Sort by ID
+	#styles
+		-for style in styles
+			.style(id="##{style.category.number.toPrecision(2)}#{style.category.letter}")
+				.name #{style.name}
+				.category #{style.category.name} #{style.category.number}#{style.category.letter}
+				.info
+					.parameters
+						-if (style.OG)
+							.og 
+								+toPlato(style.OG.min)
+								|&ndash;
+								+toPlato(style.OG.max)
+								|&deg;P (#{style.OG.min.toFixed(3)}&ndash;#{style.OG.max.toFixed(3)})
+						-if (style.FG)
+							.fg
+								+toPlato(style.FG.min)
+								|&ndash;
+								+toPlato(style.FG.max)
+								|&deg;P (#{style.FG.min.toFixed(3)}&ndash;#{style.FG.max.toFixed(3)})
+						-if (style.IBU)
+							.ibu #{style.IBU.min}&ndash;#{style.IBU.max}
+						-if (style.color)
+							.color #{style.color.min}&ndash;#{style.color.max}
+						-if (style.ABV)
+							.abv #{style.ABV.min}&ndash;#{style.ABV.max}
+					.descriptions
+						-if (style.notes)
+							.notes= style.notes
