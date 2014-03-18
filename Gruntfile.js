@@ -45,6 +45,14 @@ module.exports=function(grunt) {
 				transform: ['coffeeify']
 			}
 		},
+		shell: {
+			xsltBJCP: {
+				command: "xmlstarlet tr BJCP2coffee.xsl styleguide2008.xml | coffee -b -c -s --no-header > BJCP2008.json"
+			},
+			xsltBA: {
+				command: "xmlstarlet tr BA2coffee.xsl BA2011-final.xml | coffee -b -c -s --no-header > BA2011.json"
+			}
+		},
 		watch: {
 			jade: {
 				files: ['*.jade'],
@@ -65,6 +73,8 @@ module.exports=function(grunt) {
 	grunt.loadNpmTasks('grunt-contrib-stylus');
 	grunt.loadNpmTasks('grunt-browserify');
 	grunt.loadNpmTasks('grunt-contrib-watch');
+	grunt.loadNpmTasks('grunt-shell');
 	
-	grunt.registerTask('build',['jade','stylus','browserify'])
+	grunt.registerTask('build',['shell:xsltBJCP','shell:xsltBA','jade','stylus','browserify'])
 }
+
