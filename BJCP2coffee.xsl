@@ -40,7 +40,7 @@
 			<xsl:if test="stats/ibu/low and stats/srm/high">
 			"color":
 				"min": <xsl:value-of select="stats/srm/low"/>
-				"max": <xsl:value-of select="stats/srm/low"/>
+				"max": <xsl:value-of select="stats/srm/high"/>
 			</xsl:if>
 			<xsl:if test="stats/ibu/low and stats/abv/high">
 			"ABV":
